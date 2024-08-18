@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Information Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="language-switcher">
+        <button onclick="setLanguage('en')">English</button>
+        <button onclick="setLanguage('ar')">العربية</button>
+    </div>
+    <div class="container" id="formContainer">
+        <form id="productForm">
+            <!-- Product Information Fields -->
+            <div class="form-item">
+                <label data-en="Product Name:" data-ar="اسم المنتج:">Product Name:</label>
+                <input id="productName" placeholder="Enter product name" />
+            </div>
+            <div class="form-item">
+                <label data-en="Model:" data-ar="نموذج:">Model:</label>
+                <input id="model" placeholder="Enter model" />
+            </div>
+            <div class="form-item">
+                <label data-en="Quantity:" data-ar="الكمية:">Quantity:</label>
+                <input id="quantity" placeholder="Enter quantity" type="number" oninput="calculateTotalPrice()" />
+            </div>
+            <div class="form-item">
+                <label data-en="Price per Unit:" data-ar="السعر لكل وحدة:">Price per Unit:</label>
+                <input id="pricePerUnit" placeholder="Enter price per unit" type="number" step="0.01" oninput="calculateTotalPrice()" />
+            </div>
+            <div class="form-item">
+                <label data-en="Description:" data-ar="وصف:">Description:</label>
+                <input id="description" placeholder="Enter description" />
+            </div>
+            <!-- Box Size and Weight Fields -->
+            <div class="form-item">
+                <label data-en="Box Size:" data-ar="حجم الصندوق:">Box Size:</label>
+                <div class="dimension-selection">
+                    <select id="dimensionUnit" onchange="calculateCBM()">
+                        <option value="mm" data-en="mm" data-ar="مم">mm</option>
+                        <option value="cm" data-en="cm" data-ar="سم">cm</option>
+                    </select>
+                    <input id="height" placeholder="Height" type="number" oninput="calculateCBM()" />
+                    <input id="breadth" placeholder="Breadth" type="number" oninput="calculateCBM()" />
+                    <input id="length" placeholder="Length" type="number" oninput="calculateCBM()" />
+                </div>
+            </div>
+            <div class="form-item">
+                <label data-en="Weight (kg):" data-ar="الوزن (كجم):">Weight (kg):</label>
+                <input id="weight" placeholder="Enter weight" type="number" step="0.01" />
+            </div>
+            <div class="form-item">
+                <label data-en="Boxes Quantity:" data-ar="عدد الصناديق:">Boxes Quantity:</label>
+                <input id="boxesQuantity" placeholder="Enter number of boxes" type="number" oninput="calculateCBM()" />
+            </div>
+            <div class="form-item">
+                <label data-en="Total CBM:" data-ar="إجمالي CBM:">Total CBM:</label>
+                <input id="totalCBM" disabled />
+            </div>
+            <!-- Shipping Section -->
+            <div class="form-item">
+                <label data-en="Shipping City:" data-ar="مدينة الشحن:">Shipping City:</label>
+                <select id="shippingCity">
+                    <option value="Sana'a" data-en="Sana'a" data-ar="صنعاء">Sana'a</option>
+                    <option value="Aden" data-en="Aden" data-ar="عدن">Aden</option>
+                    <option value="Hudaidah" data-en="Hudaidah" data-ar="الحديدة">Hudaidah</option>
+                </select>
+            </div>
+            <div class="form-item">
+                <label data-en="Cost per CBM:" data-ar="التكلفة لكل CBM:">Cost per CBM:</label>
+                <input id="costPerCBM" placeholder="Enter cost per CBM" type="number" step="0.01" oninput="calculateShippingPrice()" />
+            </div>
+            <div class="form-item">
+                <label data-en="Shipping Price:" data-ar="سعر الشحن:">Shipping Price:</label>
+                <input id="shippingPrice" disabled />
+            </div>
+            <!-- Total Price Field -->
+            <div class="form-item">
+                <label data-en="Total Price:" data-ar="السعر الكلي:">Total Price:</label>
+                <input id="totalPrice" disabled />
+            </div>
+            <button type="button" onclick="generateText()">Generate Text</button>
+        </form>
+
+        <div id="output" class="output"></div>
+        <button id="copyButton" onclick="copyText()" style="display: none;">Copy to Clipboard</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

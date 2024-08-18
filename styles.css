@@ -1,0 +1,89 @@
+/* Language switcher */
+.language-switcher {
+    margin-bottom: 20px;
+}
+
+.language-switcher button {
+    margin: 0 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.form-item {
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007aff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+button:active {
+    background-color: #005bb5;
+}
+
+.output {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 300px;
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.dimension-selection {
+    display: flex;
+    gap: 5px;
+}
+
+.dimension-selection input {
+    width: calc(33.33% - 5px);
+}
+
+/* RTL styles for Arabic */
+body.rtl {
+    direction: rtl;
+    text-align: right;
+}
+
+body.rtl .output {
+    text-align: right;
+}
+
+body.rtl .dimension-selection {
+    flex-direction: row-reverse;
+}
